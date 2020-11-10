@@ -1,11 +1,9 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
 # compiled output
-/dist
 /tmp
 /out-tsc
 # Only exists if Bazel was run
 /bazel-out
+/dist
 
 # dependencies
 /node_modules
@@ -44,3 +42,10 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# my changes
+
+# check in www, but not other build artifacts
+/dist/public
+/dist/api/**
+!dist/api/bin/www
