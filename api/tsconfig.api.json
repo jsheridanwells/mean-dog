@@ -4,6 +4,9 @@
     "module": "CommonJS",
     "target": "ESNext",
     "outDir": "../dist/api",
-    "sourceMap": true
+    "sourceMap": true,
+    "types": [
+      "node"
+    ]
   }
 }

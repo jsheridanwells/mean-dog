@@ -3,6 +3,8 @@ import * as path from 'path';
 import { Express } from 'express';
 import * as livereload from 'livereload';
 import * as connectLivereload from 'connect-livereload';
+import mongo from './mongo';
+import getRoutes from './routes';
 
 
 export default function createApp(): Express {
@@ -12,13 +14,17 @@ export default function createApp(): Express {
     livereloadServer = livereload.createServer();
 
     livereloadServer.watch(path.join(__dirname, '../public'));
+
     app.use(connectLivereload());
+
     livereloadServer.once('connection', () => {
       setTimeout(() => livereloadServer.refresh('/'), 100);
     });
   }
 
+  mongo();
+  app.use(express.json());
   app.use(express.static(path.join(__dirname, '../public')));
-  app.use('/api', (req, res) => res.send(`api works :)`));
+  app.use('/api', getRoutes());
   return app;
 }
