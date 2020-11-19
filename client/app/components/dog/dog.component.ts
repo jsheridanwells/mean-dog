@@ -17,5 +17,4 @@ export class DogComponent implements OnInit {
       this.dogList = dogs;
     });
   }
-
 }

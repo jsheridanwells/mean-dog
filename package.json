@@ -10,8 +10,8 @@
     "e2e": "ng e2e",
     "clean": "rm -rf ./dist/api && rm -rf ./dist/public/",
     "cp:www": "mkdir -p ./dist/api/bin && cp api/bin/www ./dist/api/bin/",
-    "dev": "concurrently \"cd ./dist/api && nodemon ./bin/www --watch\" \"ng build --watch\" \"tsc -p ./api/tsconfig.api.json -w\"",
-    "prod": "concurrently \"npm run clean && npm run cp:www && ng build --aot --prod && tsc -p ./api/tsconfig.api.json && cd ./dist/api && node ./bin/www\""
+    "dev": "concurrently -k \"mongod --quiet\" \"cd ./dist/api && nodemon ./bin/www --watch\" \"ng build --watch\" \"tsc -p ./api/tsconfig.api.json -w\"",
+    "prod": "concurrently -k \"mongod --quiet\" \"npm run clean && npm run cp:www && ng build --aot --prod && tsc -p ./api/tsconfig.api.json && cd ./dist/api && node ./bin/www\""
   },
   "private": true,
   "dependencies": {

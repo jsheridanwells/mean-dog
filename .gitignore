@@ -42,10 +42,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-# my changes
-
-# check in www, but not other build artifacts
-/dist/public
-/dist/api/**
-!dist/api/bin/www
